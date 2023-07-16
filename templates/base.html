@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory Management</title>
+    <style>
+        /* Navigation bar styles */
+        nav {
+            background-color: #f1f1f1;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 10px;
+        }
+
+        nav li a {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        nav li a:hover {
+            background-color: #ddd;
+        }
+
+        /* Content styles */
+        .content {
+            padding: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('products') }}">Products</a></li>
+            <li><a href="{{ url_for('locations') }}">Locations</a></li>
+            <li><a href="{{ url_for('movements') }}">Movements</a></li>
+            <li><a href="{{ url_for('report') }}">Report</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

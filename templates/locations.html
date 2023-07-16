@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Locations</h2>
+    <form method="POST" action="{{ url_for('locations') }}">
+        <label for="location_id">Location ID:</label>
+        <input type="text" id="location_id" name="location_id" required>
+        <button type="submit">Add Location</button>
+    </form>
+    <br>
+    <table>
+        <tr>
+            <th>Location ID</th>
+            <th>Actions</th>
+        </tr>
+        {% for location in locations %}
+        <tr>
+            <td>{{ location.location_id }}</td>
+            <td>
+                <a href="{{ url_for('update_location', location_id=location.location_id) }}">Edit</a> |
+                <a href="{{ url_for('delete_location', location_id=location.location_id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

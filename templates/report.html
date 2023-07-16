@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Report</h2>
+    {% for report_entry in report_data %}
+        <h3>Location: {{ report_entry.location }}</h3>
+        <table>
+            <tr>
+                <th>Product ID</th>
+                <th>Balance</th>
+            </tr>
+            {% for product_id, balance in report_entry.balances.items() %}
+                <tr>
+                    <td>{{ product_id }}</td>
+                    <td>{{ balance }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+{% endblock %}

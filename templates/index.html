@@ -1,0 +1,14 @@
+<!-- index.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <img class="full-page-image" src="{{ url_for('static', filename='images.jpg') }}" alt="Inventory Image">
+    <div class="content-overlay">
+      <h1>Welcome to Inventory Management</h1>
+      <p>This web application allows you to manage the inventory of products in various locations.</p>
+      
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Product Movements</h2>
+    <form method="POST" action="{{ url_for('movements') }}">
+        <label for="movement_id">Movement ID:</label>
+        <input type="text" id="movement_id" name="movement_id" required>
+        <label for="timestamp">Timestamp:</label>
+        <input type="datetime-local" id="timestamp" name="timestamp" required>
+        <label for="from_location">From Location:</label>
+        <input type="text" id="from_location" name="from_location">
+        <label for="to_location">To Location:</label>
+        <input type="text" id="to_location" name="to_location">
+        <label for="product_id">Product ID:</label>
+        <input type="text" id="product_id" name="product_id" required>
+        <label for="qty">Quantity:</label>
+        <input type="number" id="qty" name="qty" required>
+        <button type="submit">Add Movement</button>
+    </form>
+    <br>
+    <table>
+        <tr>
+            <th>Movement ID</th>
+            <th>Timestamp</th>
+            <th>From Location</th>
+            <th>To Location</th>
+            <th>Product ID</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+        {% for movement in movements %}
+        <tr>
+            <td>{{ movement.movement_id }}</td>
+            <td>{{ movement.timestamp }}</td>
+            <td>{{ movement.from_location }}</td>
+            <td>{{ movement.to_location }}</td>
+            <td>{{ movement.product_id }}</td>
+            <td>{{ movement.qty }}</td>
+            <td>
+                <a href="{{ url_for('update_movement', movement_id=movement.movement_id) }}">Edit</a> |
+                <a href="{{ url_for('delete_movement', movement_id=movement.movement_id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
